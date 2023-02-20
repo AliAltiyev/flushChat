@@ -10,6 +10,8 @@ class Registration extends StatefulWidget {
 class _RegistrationState extends State<Registration> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Column(children: [Text('Registration')],),
+    );;
   }
 }
