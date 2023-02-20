@@ -52,30 +52,40 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   Widget _signInButton() {
-    return Container(
-      decoration: kSignInButtonDecoration,
-      height: 50,
-      width: 200,
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: const Text(
-        'Sign In',
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed(kSignIn_screen_route);
+      },
+      child: Container(
+        decoration: kSignInButtonDecoration,
+        height: 50,
+        width: 200,
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: const Text(
+          'Sign In',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+        ),
       ),
     );
   }
 
   Widget _registrationButton() {
-    return Container(
-      decoration: kRegistrationButtonDecoration,
-      height: 50,
-      width: 200,
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: const Text(
-        'Registration',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed(kRegistration_screen_route);
+      },
+      child: Container(
+        decoration: kRegistrationButtonDecoration,
+        height: 50,
+        width: 200,
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: const Text(
+          'Registration',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
+        ),
       ),
     );
   }
