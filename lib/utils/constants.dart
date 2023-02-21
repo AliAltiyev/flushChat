@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const kWelcome_screen_route = '/welcome_screen';
+const kWelcome_screen_route = '/';
 const kRegistration_screen_route = '/registration_screen';
 const kSignIn_screen_route = '/sign_in_screen';
 const kHome_srceen_route = '/home_screen';
@@ -18,8 +18,14 @@ final kSignInButtonDecoration = BoxDecoration(
     border: Border.all(width: 2, color: Colors.orangeAccent),
     borderRadius: const BorderRadius.all(Radius.circular(20)));
 
-final appLogoStyle = GoogleFonts.arimaMadurai(
+final kAppLogoStyle = GoogleFonts.arimaMadurai(
     textStyle: const TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.w800,
         shadows: [Shadow(color: Colors.orange, blurRadius: 100)]));
+
+final kRegistrationTextFieldBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(20),
+    borderSide: const BorderSide(
+      color: Colors.orangeAccent,
+    ));
