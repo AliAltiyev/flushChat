@@ -10,8 +10,19 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Column(children: [Text('Sign in')],),
-    );
+    return Scaffold(
+        body: ListView(
+      children: [
+        Hero(
+            tag: 'logoTag',
+            child: Container(
+              height: 200,
+              width: double.infinity,
+              child: Image.asset(
+                'assets/mainimage.png',
+              ),
+            )),
+      ],
+    ));
   }
 }

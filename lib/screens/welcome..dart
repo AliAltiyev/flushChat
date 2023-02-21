@@ -11,7 +11,27 @@ class WelcomeScreen extends StatefulWidget {
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation animation;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(seconds: 1));
+    animationController.forward();
+    animation = CurvedAnimation(
+        parent: animationController, curve: Curves.bounceIn);
+
+    animationController.addListener(() {
+      setState(() {
+        debugPrint('${animation.value}');
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +43,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             children: [
               Container(
                 padding: const EdgeInsets.only(top: 20),
-                height: 100,
+                height: animation.value * 200,
                 color: Colors.black12,
                 child: Text(
                   'Flash Chat',
@@ -37,6 +57,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   padding: const EdgeInsets.only(left: 40),
                   child: Image.asset(
                     'assets/mainimage.png',
+                    width: animation.value * 400,
+                    height: animation.value * 400,
                     fit: BoxFit.fitWidth,
                   ),
                 ),
@@ -51,7 +73,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Navigator.pushNamed(context, kRegistration_screen_route);
                     },
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   _signInButton(),
                 ],
               )
