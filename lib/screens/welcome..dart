@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flush_chat/widgets/buttons/registration.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,11 +20,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   void initState() {
     super.initState();
-    animationController = AnimationController(
-        vsync: this, duration: const Duration(seconds: 1));
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
     animationController.forward();
-    animation = CurvedAnimation(
-        parent: animationController, curve: Curves.bounceIn);
+    animation =
+        CurvedAnimation(parent: animationController, curve: Curves.bounceIn);
 
     animationController.addListener(() {
       setState(() {
@@ -42,15 +43,31 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                padding: const EdgeInsets.only(top: 20),
-                height: animation.value * 200,
-                color: Colors.black12,
-                child: Text(
-                  'Flash Chat',
-                  textAlign: TextAlign.center,
-                  style: kAppLogoStyle,
-                ),
-              ),
+                  padding: const EdgeInsets.only(top: 20),
+                  height: animation.value * 150,
+                  child: SizedBox(
+                    width: 250.0,
+                    child: DefaultTextStyle(
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 30.0,
+                        fontFamily: 'Agne',
+                      ),
+                      child: AnimatedTextKit(
+                        animatedTexts: [
+                          TypewriterAnimatedText('Discipline is the best tool'),
+                          TypewriterAnimatedText('Design first, then code'),
+                          TypewriterAnimatedText(
+                              'Do not patch bugs out, rewrite them'),
+                          TypewriterAnimatedText(
+                              'Do not test bugs out, design them out'),
+                        ],
+                        onTap: () {
+                          print("Tap Event");
+                        },
+                      ),
+                    ),
+                  )),
               Hero(
                 tag: 'logoTag',
                 child: Padding(
@@ -69,37 +86,26 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     height: 20,
                   ),
                   RegistrationButton(
+                    buttonColor: Colors.deepOrangeAccent,
+                    labelText: 'Registration',
                     onTap: () {
                       Navigator.pushNamed(context, kRegistration_screen_route);
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  _signInButton(),
+                  RegistrationButton(
+                    foreGroundColor: Colors.deepOrangeAccent,
+                    onTap: () {},
+                    labelText: 'Sign in',
+                    buttonColor: Colors.white,
+                    borderSideColor: Colors.deepOrangeAccent,
+                  ),
                 ],
               )
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _signInButton() {
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).pushNamed(kSignIn_screen_route);
-      },
-      child: Container(
-        decoration: kSignInButtonDecoration,
-        height: 50,
-        width: 200,
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: const Text(
-          'Sign In',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
         ),
       ),
     );

@@ -42,7 +42,10 @@ class _RegistrationState extends State<Registration> {
                       labelText: 'Password',
                       textEditingController: _passwordTextController),
                   RegistrationButton(
-                    onTap: () {},
+                    buttonColor: Colors.deepOrangeAccent,
+                    labelText: 'Sign up',
+                    onTap: () {
+                    },
                   ),
                 ],
               )
