@@ -24,8 +24,16 @@ final kAppLogoStyle = GoogleFonts.arimaMadurai(
         fontWeight: FontWeight.w800,
         shadows: [Shadow(color: Colors.orange, blurRadius: 100)]));
 
-final kRegistrationTextFieldBorder = OutlineInputBorder(
+final kRegistrationTextFieldEnabledBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(20),
     borderSide: const BorderSide(
+      width: 2,
       color: Colors.orangeAccent,
+    ));
+
+final kRegistrationTextFieldFocusedBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(20),
+    borderSide: const BorderSide(
+      width: 2,
+      color: Colors.deepOrangeAccent,
     ));

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class RegistrationButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
   final String labelText;
   final Color buttonColor;
   final Color? borderSideColor;
   final Color? foreGroundColor;
 
-  const RegistrationButton(
+  const CustomButton(
       {Key? key,
       required this.onTap,
       required this.labelText,

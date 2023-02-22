@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
 
-class UserInput extends StatefulWidget {
+class CustomTextField extends StatefulWidget {
   final IconData icon;
   final String labelText;
   final TextEditingController textEditingController;
 
-  const UserInput(
+  const CustomTextField(
       {Key? key,
       required this.icon,
       required this.labelText,
@@ -15,10 +15,10 @@ class UserInput extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<UserInput> createState() => _UserInputState();
+  State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
-class _UserInputState extends State<UserInput> {
+class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,15 +26,15 @@ class _UserInputState extends State<UserInput> {
       child: TextField(
         controller: widget.textEditingController,
         decoration: InputDecoration(
-            focusedBorder: kRegistrationTextFieldBorder,
-            enabledBorder: kRegistrationTextFieldBorder,
+            focusedBorder: kRegistrationTextFieldFocusedBorder,
+            enabledBorder: kRegistrationTextFieldEnabledBorder,
             icon: Icon(
               widget.icon,
               color: Colors.orangeAccent,
             ),
             labelStyle: const TextStyle(color: Colors.orange),
             labelText: widget.labelText,
-            border: kRegistrationTextFieldBorder),
+            ),
       ),
     );
   }
