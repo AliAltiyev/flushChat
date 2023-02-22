@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const kWelcome_screen_route = '/';
-const kRegistration_screen_route = '/registration_screen';
-const kSignIn_screen_route = '/sign_in_screen';
-const kHome_srceen_route = '/home_screen';
+const kWelcome_screen_route = 'welcome_screen';
+const kRegistration_screen_route = 'registration_screen';
+const kSignIn_screen_route = 'sign_in_screen';
+const kHome_srceen_route = 'home_screen';
+const kChat_screen_route = 'chat_screen';
 
 //ui
 final kRegistrationButtonDecoration = BoxDecoration(
@@ -37,3 +38,7 @@ final kRegistrationTextFieldFocusedBorder = OutlineInputBorder(
       width: 2,
       color: Colors.deepOrangeAccent,
     ));
+
+//Firebase
+const kFirebaseAuthEmailAlreadyInUse =
+    'The email address is already in use by another account.';

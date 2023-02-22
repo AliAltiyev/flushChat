@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flush_chat/utils/constants.dart';
 import 'package:flush_chat/widgets/textfield/user_input.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +15,27 @@ class Registration extends StatefulWidget {
 class _RegistrationState extends State<Registration> {
   final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
+  late FirebaseAuth _auth;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _auth = FirebaseAuth.instance;
+  }
+
+  _registerUser() async {
+    if (_emailTextController.text.isNotEmpty &&
+        _passwordTextController.text.isNotEmpty) {
+      await _auth.createUserWithEmailAndPassword(
+          email: _emailTextController.text,
+          password: _passwordTextController.text);
+      Navigator.of(context).pushNamed(kChat_screen_route);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text(kFirebaseAuthEmailAlreadyInUse)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +67,9 @@ class _RegistrationState extends State<Registration> {
                   CustomButton(
                     buttonColor: Colors.deepOrangeAccent,
                     childText: 'Sign up',
-                    onTap: () {},
+                    onTap: () {
+                      _registerUser();
+                    },
                   ),
                 ],
               )

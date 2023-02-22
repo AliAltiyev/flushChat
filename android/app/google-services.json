@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "678753558739",
+    "project_id": "flashchat-d445d",
+    "storage_bucket": "flashchat-d445d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678753558739:android:16668c616b2617a37a3426",
+        "android_client_info": {
+          "package_name": "com.abdusselam.flush_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678753558739-o44trnvam19rjic8ibft04hq43n2iemt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbn1Q3dYJ-eumOwnysV9omzp9TIehQH7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678753558739-o44trnvam19rjic8ibft04hq43n2iemt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
