@@ -1,6 +1,6 @@
+import 'package:flush_chat/widgets/textfield/user_input.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/constants.dart';
 import '../widgets/buttons/registration.dart';
 
 class Registration extends StatefulWidget {
@@ -18,62 +18,39 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children:[
+        children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Hero(
                 tag: 'logoTag',
-                child: Container(
+                child: SizedBox(
                     width: double.infinity,
                     child: Image.asset('assets/mainimage.png')),
               ),
               Column(
                 children: [
-                  _registrationTextField(
+                  CustomTextField(
                       icon: Icons.email_outlined,
                       labelText: 'Email',
                       textEditingController: _emailTextController),
                   const SizedBox(
                     height: 30,
                   ),
-                  _registrationTextField(
-                      icon: Icons.lock,
+                  CustomTextField(
+                      icon: Icons.lock_outline_sharp,
                       labelText: 'Password',
                       textEditingController: _passwordTextController),
-                  RegistrationButton(
+                  CustomButton(
                     buttonColor: Colors.deepOrangeAccent,
                     labelText: 'Sign up',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                 ],
               )
             ],
           )
-        ] ,
-      ),
-    );
-  }
-
-  Padding _registrationTextField(
-      {required IconData icon,
-      required String labelText,
-      required TextEditingController textEditingController}) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: TextField(
-        controller: textEditingController,
-        decoration: InputDecoration(
-            focusedBorder: kRegistrationTextFieldBorder,
-            enabledBorder: kRegistrationTextFieldBorder,
-            icon: Icon(
-              icon,
-              color: Colors.orangeAccent,
-            ),
-            labelStyle: const TextStyle(color: Colors.orange),
-            labelText: labelText,
-            border: kRegistrationTextFieldBorder),
+        ],
       ),
     );
   }

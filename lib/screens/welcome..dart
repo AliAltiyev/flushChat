@@ -85,7 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   const SizedBox(
                     height: 20,
                   ),
-                  RegistrationButton(
+                  CustomButton(
                     buttonColor: Colors.deepOrangeAccent,
                     labelText: 'Registration',
                     onTap: () {
@@ -95,9 +95,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   const SizedBox(
                     height: 20,
                   ),
-                  RegistrationButton(
+                  CustomButton(
                     foreGroundColor: Colors.deepOrangeAccent,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, kSignIn_screen_route);
+                    },
                     labelText: 'Sign in',
                     buttonColor: Colors.white,
                     borderSideColor: Colors.deepOrangeAccent,
