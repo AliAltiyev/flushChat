@@ -87,7 +87,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                   CustomButton(
                     buttonColor: Colors.deepOrangeAccent,
-                    labelText: 'Registration',
+                    childText: 'Registration',
                     onTap: () {
                       Navigator.pushNamed(context, kRegistration_screen_route);
                     },
@@ -100,7 +100,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     onTap: () {
                       Navigator.pushNamed(context, kSignIn_screen_route);
                     },
-                    labelText: 'Sign in',
+                    childText: 'Sign in',
                     buttonColor: Colors.white,
                     borderSideColor: Colors.deepOrangeAccent,
                   ),
