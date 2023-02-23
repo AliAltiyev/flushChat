@@ -16,25 +16,40 @@ class _RegistrationState extends State<Registration> {
   final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
   late FirebaseAuth _auth;
+  late User? _user;
+
+  _registerUser() async {
+    try {
+      if (_auth.currentUser != null) {
+      } else {}
+      if (_auth.currentUser != null) {
+        if (_auth.currentUser != null) {
+          Navigator.of(context).pushNamed(kChat_screen_route);
+        }
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Password is so weak')));
+      } else if (e.code == 'The email address is badly formatted') {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Password is so weak')));
+      } else if (e.code == 'operation-not-allowed') {
+        throw Exception('There is a problem with auth service config :/');
+      } else if (e.code == 'weak-password') {
+        throw Exception('Please type stronger password');
+      } else {
+        print('auth error ' + e.toString());
+        rethrow;
+      }
+    }
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _auth = FirebaseAuth.instance;
-  }
-
-  _registerUser() async {
-    if (_emailTextController.text.isNotEmpty &&
-        _passwordTextController.text.isNotEmpty) {
-      await _auth.createUserWithEmailAndPassword(
-          email: _emailTextController.text,
-          password: _passwordTextController.text);
-      Navigator.of(context).pushNamed(kChat_screen_route);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text(kFirebaseAuthEmailAlreadyInUse)));
-    }
   }
 
   @override
