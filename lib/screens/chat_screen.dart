@@ -29,6 +29,18 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          TextButton(
+              onPressed: () async {
+                try {
+                  await _auth.signOut();
+                  if (mounted) Navigator.pop(context);
+                } catch (e) {
+                  print(e);
+                }
+              },
+              child: Text('Sign out'))
+        ],
         title: const Text('Chat'),
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -36,7 +48,6 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-
           Row(
             children: [
               Expanded(
@@ -49,7 +60,8 @@ class _ChatScreenState extends State<ChatScreen> {
               Expanded(
                 child: MaterialButton(
                   onPressed: () {},
-                  child: Icon(Icons.arrow_circle_right,color :  Colors.deepOrangeAccent),
+                  child: const Icon(Icons.arrow_circle_right,
+                      color: Colors.deepOrangeAccent),
                 ),
               )
             ],
