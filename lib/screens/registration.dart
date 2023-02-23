@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flush_chat/utils/constants.dart';
 import 'package:flush_chat/widgets/textfield/user_input.dart';
 import 'package:flutter/material.dart';
+import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
 import '../widgets/buttons/registration.dart';
 
@@ -17,6 +18,7 @@ class _RegistrationState extends State<Registration> {
   final TextEditingController _passwordTextController = TextEditingController();
   late FirebaseAuth _auth;
   late User? _user;
+  bool progressBarVisibility = false;
 
   _registerUser() async {
     try {
@@ -66,6 +68,26 @@ class _RegistrationState extends State<Registration> {
                     width: double.infinity,
                     child: Image.asset('assets/mainimage.png')),
               ),
+              Container(
+                height: 100,
+                width: 100,
+                child: Visibility(
+                    visible: progressBarVisibility,
+                    child: LiquidLinearProgressIndicator(
+                      value: 0.25,
+                      // Defaults to 0.5.
+                      valueColor: const AlwaysStoppedAnimation(Colors.pink),
+                      // Defaults to the current Theme's accentColor.
+                      backgroundColor: Colors.white,
+                      // Defaults to the current Theme's backgroundColor.
+                      borderColor: Colors.red,
+                      borderWidth: 5.0,
+                      borderRadius: 12.0,
+                      direction: Axis.vertical,
+                      // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.horizontal.
+                      center: Text("Loading..."),
+                    )),
+              ),
               Column(
                 children: [
                   CustomTextField(
@@ -83,7 +105,11 @@ class _RegistrationState extends State<Registration> {
                     buttonColor: Colors.deepOrangeAccent,
                     childText: 'Sign up',
                     onTap: () {
+                      setState(() {
+                        progressBarVisibility = true;
+                      });
                       _registerUser();
+
                     },
                   ),
                 ],
