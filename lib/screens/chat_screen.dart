@@ -24,7 +24,17 @@ class _ChatScreenState extends State<ChatScreen> {
       _user = currentUser;
     }
 
-    print("${_user.email}");
+    //  print("${_user.email}");
+    _subscribeToMessages();
+  }
+
+  _subscribeToMessages() async {
+    await for (var snapshots
+        in _firebaseFirestore.collection('messages').snapshots()) {
+      for (var messages in snapshots.docs) {
+        debugPrint(messages.data().toString());
+      }
+    }
   }
 
   @override
@@ -62,8 +72,10 @@ class _ChatScreenState extends State<ChatScreen> {
               Expanded(
                 child: MaterialButton(
                   onPressed: () {
-                    _firebaseFirestore.collection('messages').add(
-                        {'text': _chatTextController.text, 'sender': _user.email});
+                    _firebaseFirestore.collection('messages').add({
+                      'text': _chatTextController.text,
+                      'sender': _user.email
+                    });
                   },
                   child: const Icon(Icons.arrow_circle_right,
                       color: Colors.deepOrangeAccent),
