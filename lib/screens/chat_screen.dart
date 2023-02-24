@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flush_chat/widgets/textfield/user_input.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   late User _user;
   final TextEditingController _chatTextController = TextEditingController();
 
@@ -59,7 +61,10 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               Expanded(
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _firebaseFirestore.collection('messages').add(
+                        {'text': _chatTextController.text, 'sender': _user.email});
+                  },
                   child: const Icon(Icons.arrow_circle_right,
                       color: Colors.deepOrangeAccent),
                 ),
